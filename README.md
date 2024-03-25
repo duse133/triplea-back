@@ -36,3 +36,11 @@ Description (src/java/capstone/triplea/backend)
   * 크로스 도메인 이슈 해결 코드로 프론트엔드 http://localhost:3000 에 모든 요청을 허용
 * controller - MainController.java
   * 메인 컨트롤러로 프론트엔드(클라이언트)의 모든 요청을 먼저 받아서 해당 URL로 어떤 서비스를 사용할건지 매핑
+* dto
+  * TravelPlanerDTO.java - 관광지 루트 정보를 가지고 루트를 짜서 해당 관광지 관광지명,위도,경도 정보를 순서대로 담는 객체
+  * TravelPlanerListDTO.java - 짜여진 루트 정보를 3개의 배열로 정보를 가지는 객체
+  * UserInputDTO.java - 사용자가 입력한 정보 3개(지역, 일수, 강도)정보를 담는 객체
+* entity - 14개의 지역 정보 테이블과 매핑된 엔티티
+* repository - 14개의 지역 정보 DB를 JPA를 상속받아 기본적인 CRUD 사용하는 레포지토리
+* service - MakePlanerService.java
+  * 사용자가 입력한 3가지 정보(지역, 일수, 강도)를 가지고 여행 관광지를 중복되지 않게 루트 3개를 짜주는 로직
