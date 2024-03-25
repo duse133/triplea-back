@@ -31,7 +31,7 @@ Version Up Contents
 
 Description (src/java/capstone/triplea/backend)
 =============
-* config - WebConfig
+* config - WebConfig.java
   * 크로스 도메인 이슈 해결 코드로 프론트엔드 http://localhost:3000에 모든 요청을 허용
-* controller - MainController
+* controller - MainController.java
   * 메인 컨트롤러로 프론트엔드(클라이언트)의 모든 요청을 먼저 받아서 해당 URL로 어떤 서비스를 사용할건지 매핑
