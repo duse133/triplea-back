@@ -87,7 +87,6 @@ public class MakePlanerService {
                     randomUniqueNumberCount++;
                 }
             }
-
         }
         else if (UserInputData.getArea().equals("부산")){
             List<Busan> BusanList = this.busanRepository.findAll();
