@@ -4,10 +4,10 @@ Trip:lener
 
 Version
 =============
-Java 17
-MySQL 8.0.36 
-mysql-connector-java 8.0.33
-InteliJ 2023.3.4
+1. Java 17   
+2. MySQL 8.0.36   
+3. mysql-connector-java 8.0.33   
+4. InteliJ 2023.3.4   
 
 How to use
 =============
