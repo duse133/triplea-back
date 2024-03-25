@@ -27,7 +27,7 @@ How to use
 Version Up Contents
 =============
 * BackEnd-0.2.0.jar : 서비스단에 여행지 루트 짜주는 로직 수정
-* DB : 부족한 데이터 추가(대구, 대전, 광주, 인천, 제주, 울산, 세종)
+* DB : 부족한 데이터 추가(대구, 대전, 광주, 인천, 제주, 울산, 세종) 예정
 
 Description (src/java/capstone/triplea/backend)
 =============
