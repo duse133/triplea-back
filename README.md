@@ -1,4 +1,4 @@
-Trip:lener
+Trip:lenner
 =============
 여행 플래너 사이트 테스트용 Trip:lener의 백엔드 프로젝트입니다.
 
