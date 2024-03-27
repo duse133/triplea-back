@@ -24,12 +24,17 @@ How to use
   * 실행후 http://localhost:8080/swagger-ui/index.html로 이동하여 REST API 통신 테스트 확인 가능
   * 해당 프로젝트 폴더에 src/main/resources에 application.yml 파일 내용 MySQL username과 password 수정 가능
 
-Version Up Contents
+Version Up Contents 0.1.0 -> 0.2.0
 =============
 * REST API 수정 : POST 방식에서 GET 방식으로 변경(데이터 수정이 아닌 데이터를 가져오기만 하기 때문)
 * BackEnd-0.2.0.jar : 서비스단에 여행지 루트 짜주는 로직 수정
-* DB : 부족한 데이터 추가(대구, 대전, 광주, 인천, 제주, 울산, 세종) 예정
-* DB 오타 수정, Entity, Repository 오타 수정 예정
+
+Version Up Contents 0.2.0 -> 0.2.1
+=============
+* DB : 부족한 데이터 추가(대구, 대전, 광주, 인천, 제주, 울산, 세종)
+* DB 오타 수정으로 인한 프로젝트 파일의 Entity, Service 파일의 오타 수정
+* REST API 수정 : GET 방식으로 하나씩 파라미터를 받는 방식이 아닌 객체를 받도록 수정
+
 Description (src/java/capstone/triplea/backend)
 =============
 * config - WebConfig.java
@@ -44,3 +49,4 @@ Description (src/java/capstone/triplea/backend)
 * repository - 엔티티로 DB에 접근하여 17개의 지역 정보 테이블에 CRUD를 사용하기 위한 인터페이스로 JPA 상속
 * service - MakePlanerService.java
   * 사용자가 입력한 3가지 정보(지역, 일수, 강도)를 가지고 여행 관광지를 중복되지 않게 루트 3개를 짜주는 로직
+  
