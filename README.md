@@ -29,7 +29,7 @@ Version Up Contents
 * REST API 수정 : POST 방식에서 GET 방식으로 변경(데이터 수정이 아닌 데이터를 가져오기만 하기 때문)
 * BackEnd-0.2.0.jar : 서비스단에 여행지 루트 짜주는 로직 수정
 * DB : 부족한 데이터 추가(대구, 대전, 광주, 인천, 제주, 울산, 세종) 예정
-
+* DB 오타 수정, Entity, Repository 오타 수정 예정
 Description (src/java/capstone/triplea/backend)
 =============
 * config - WebConfig.java
