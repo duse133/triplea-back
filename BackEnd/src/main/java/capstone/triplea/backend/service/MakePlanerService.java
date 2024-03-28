@@ -39,6 +39,7 @@ public class MakePlanerService {
         List<TravelPlanerListDTO> TravelPlanerList = new ArrayList<>();
         randomUniqueNumberCount = 0;
         uniqueNumbers.clear();
+
         //총 3개 만들어서 추천해줘야함
         for(int i = 1; i<=3; i++){
             TravelPlanerListDTO travel = TravelPlanerListDTO.builder()
