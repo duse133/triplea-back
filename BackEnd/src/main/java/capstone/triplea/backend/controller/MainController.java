@@ -14,19 +14,8 @@ public class MainController {
 
     private final MakePlanerService makePlanerService;
 
-    @GetMapping("/make/planer")
-    public List<TravelPlanerListDTO> makePlaner(@RequestParam String area,
-                                                @RequestParam String day,
-                                                @RequestParam String strength){
-
-        UserInputDTO UserInputData = UserInputDTO.builder().
-                area(area).
-                day(day).
-                strength(strength).
-                build();
-
-        return this.makePlanerService.makePlanerTourist(UserInputData);
+    @GetMapping("/make/planner")
+    public List<TravelPlanerListDTO> makePlaner(UserInputDTO userInputDTO){
+        return this.makePlanerService.makePlanerTourist(userInputDTO);
     }
-
-
 }

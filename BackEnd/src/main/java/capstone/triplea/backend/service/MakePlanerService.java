@@ -78,10 +78,10 @@ public class MakePlanerService {
                     count++;
                     TravelPlanerDTO TravelPlan = TravelPlanerDTO.builder()
                             .day(String.valueOf(i))
-                            .order(String.valueOf(count))
+                            .order(count)
                             .touristDestinationName(SeoulList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(SeoulList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longitude(SeoulList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
+                            .longtitude(SeoulList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -103,10 +103,10 @@ public class MakePlanerService {
                     count++;
                     TravelPlanerDTO TravelPlan = TravelPlanerDTO.builder()
                             .day(String.valueOf(i))
-                            .order(String.valueOf(count))
+                            .order(count)
                             .touristDestinationName(BusanList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(BusanList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longitude(BusanList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
+                            .longtitude(BusanList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -128,10 +128,10 @@ public class MakePlanerService {
                     count++;
                     TravelPlanerDTO TravelPlan = TravelPlanerDTO.builder()
                             .day(String.valueOf(i))
-                            .order(String.valueOf(count))
+                            .order(count)
                             .touristDestinationName(DaeguList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(DaeguList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longitude(DaeguList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
+                            .longtitude(DaeguList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -153,10 +153,10 @@ public class MakePlanerService {
                     count++;
                     TravelPlanerDTO TravelPlan = TravelPlanerDTO.builder()
                             .day(String.valueOf(i))
-                            .order(String.valueOf(count))
+                            .order(count)
                             .touristDestinationName(IncheonList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(IncheonList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longitude(IncheonList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
+                            .longtitude(IncheonList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -178,10 +178,10 @@ public class MakePlanerService {
                     count++;
                     TravelPlanerDTO TravelPlan = TravelPlanerDTO.builder()
                             .day(String.valueOf(i))
-                            .order(String.valueOf(count))
+                            .order(count)
                             .touristDestinationName(GawngjuList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(GawngjuList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longitude(GawngjuList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
+                            .longtitude(GawngjuList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -203,10 +203,10 @@ public class MakePlanerService {
                     count++;
                     TravelPlanerDTO TravelPlan = TravelPlanerDTO.builder()
                             .day(String.valueOf(i))
-                            .order(String.valueOf(count))
+                            .order(count)
                             .touristDestinationName(DeajeonList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(DeajeonList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longitude(DeajeonList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
+                            .longtitude(DeajeonList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -228,10 +228,10 @@ public class MakePlanerService {
                     count++;
                     TravelPlanerDTO TravelPlan = TravelPlanerDTO.builder()
                             .day(String.valueOf(i))
-                            .order(String.valueOf(count))
+                            .order(count)
                             .touristDestinationName(UlsanList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(UlsanList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longitude(UlsanList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
+                            .longtitude(UlsanList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -253,10 +253,10 @@ public class MakePlanerService {
                     count++;
                     TravelPlanerDTO TravelPlan = TravelPlanerDTO.builder()
                             .day(String.valueOf(i))
-                            .order(String.valueOf(count))
+                            .order(count)
                             .touristDestinationName(SejongList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(SejongList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longitude(SejongList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
+                            .longtitude(SejongList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -278,10 +278,10 @@ public class MakePlanerService {
                     count++;
                     TravelPlanerDTO TravelPlan = TravelPlanerDTO.builder()
                             .day(String.valueOf(i))
-                            .order(String.valueOf(count))
+                            .order(count)
                             .touristDestinationName(GyeonggidoList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(GyeonggidoList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longitude(GyeonggidoList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
+                            .longtitude(GyeonggidoList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -303,10 +303,10 @@ public class MakePlanerService {
                     count++;
                     TravelPlanerDTO TravelPlan = TravelPlanerDTO.builder()
                             .day(String.valueOf(i))
-                            .order(String.valueOf(count))
+                            .order(count)
                             .touristDestinationName(GangwondoList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(GangwondoList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longitude(GangwondoList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
+                            .longtitude(GangwondoList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -328,10 +328,10 @@ public class MakePlanerService {
                     count++;
                     TravelPlanerDTO TravelPlan = TravelPlanerDTO.builder()
                             .day(String.valueOf(i))
-                            .order(String.valueOf(count))
+                            .order(count)
                             .touristDestinationName(ChungbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(ChungbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longitude(ChungbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
+                            .longtitude(ChungbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -353,10 +353,10 @@ public class MakePlanerService {
                     count++;
                     TravelPlanerDTO TravelPlan = TravelPlanerDTO.builder()
                             .day(String.valueOf(i))
-                            .order(String.valueOf(count))
+                            .order(count)
                             .touristDestinationName(ChungnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(ChungnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longitude(ChungnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
+                            .longtitude(ChungnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -378,10 +378,10 @@ public class MakePlanerService {
                     count++;
                     TravelPlanerDTO TravelPlan = TravelPlanerDTO.builder()
                             .day(String.valueOf(i))
-                            .order(String.valueOf(count))
+                            .order(count)
                             .touristDestinationName(JeonbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(JeonbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longitude(JeonbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
+                            .longtitude(JeonbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -403,10 +403,10 @@ public class MakePlanerService {
                     count++;
                     TravelPlanerDTO TravelPlan = TravelPlanerDTO.builder()
                             .day(String.valueOf(i))
-                            .order(String.valueOf(count))
+                            .order(count)
                             .touristDestinationName(JeonnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(JeonnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longitude(JeonnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
+                            .longtitude(JeonnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -428,10 +428,10 @@ public class MakePlanerService {
                     count++;
                     TravelPlanerDTO TravelPlan = TravelPlanerDTO.builder()
                             .day(String.valueOf(i))
-                            .order(String.valueOf(count))
+                            .order(count)
                             .touristDestinationName(GyongbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(GyongbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longitude(GyongbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
+                            .longtitude(GyongbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -453,10 +453,10 @@ public class MakePlanerService {
                     count++;
                     TravelPlanerDTO TravelPlan = TravelPlanerDTO.builder()
                             .day(String.valueOf(i))
-                            .order(String.valueOf(count))
+                            .order(count)
                             .touristDestinationName(GyeongnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(GyeongnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longitude(GyeongnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
+                            .longtitude(GyeongnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -478,10 +478,10 @@ public class MakePlanerService {
                     count++;
                     TravelPlanerDTO TravelPlan = TravelPlanerDTO.builder()
                             .day(String.valueOf(i))
-                            .order(String.valueOf(count))
+                            .order(count)
                             .touristDestinationName(JejuList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(JejuList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longitude(JejuList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
+                            .longtitude(JejuList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;

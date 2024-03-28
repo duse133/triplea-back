@@ -29,7 +29,7 @@ public class Gyeonggido {
     private Double latitude;
 
     @Column(nullable = false)
-    private Double longitude;
+    private Double longtitude;
 
     @Column(nullable = false)
     private Double area;
