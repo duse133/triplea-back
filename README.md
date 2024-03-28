@@ -35,6 +35,10 @@ Version Up Contents 0.2.0 -> 0.2.1
 * DB 오타 수정으로 인한 프로젝트 파일의 Entity, Service 파일의 오타 수정
 * REST API 수정 : GET 방식으로 하나씩 파라미터를 받는 방식이 아닌 객체를 받도록 수정
 
+Version Up Contents 0.2.1 -> 0.2.2
+=============
+* REST API 오류 메세지 추가 : E01(파라미터 누락), E02(데이터 부족)
+
 Description (src/java/capstone/triplea/backend)
 =============
 * config - WebConfig.java
