@@ -14,5 +14,5 @@ public class TravelPlanerDTO {
     private String day; //날짜
     private String touristDestinationName; //관광지 명
     private Double latitude; //해당 관광지 위도
-    private Double longtitude; //해당 관광지 경도
+    private Double longitude; //해당 관광지 경도
 }

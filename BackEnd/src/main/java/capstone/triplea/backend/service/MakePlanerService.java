@@ -82,7 +82,7 @@ public class MakePlanerService {
                             .order(count)
                             .touristDestinationName(SeoulList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(SeoulList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longtitude(SeoulList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
+                            .longitude(SeoulList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -107,7 +107,7 @@ public class MakePlanerService {
                             .order(count)
                             .touristDestinationName(BusanList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(BusanList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longtitude(BusanList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
+                            .longitude(BusanList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -132,7 +132,7 @@ public class MakePlanerService {
                             .order(count)
                             .touristDestinationName(DaeguList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(DaeguList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longtitude(DaeguList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
+                            .longitude(DaeguList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -157,7 +157,7 @@ public class MakePlanerService {
                             .order(count)
                             .touristDestinationName(IncheonList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(IncheonList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longtitude(IncheonList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
+                            .longitude(IncheonList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -182,7 +182,7 @@ public class MakePlanerService {
                             .order(count)
                             .touristDestinationName(GawngjuList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(GawngjuList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longtitude(GawngjuList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
+                            .longitude(GawngjuList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -207,7 +207,7 @@ public class MakePlanerService {
                             .order(count)
                             .touristDestinationName(DeajeonList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(DeajeonList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longtitude(DeajeonList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
+                            .longitude(DeajeonList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -232,7 +232,7 @@ public class MakePlanerService {
                             .order(count)
                             .touristDestinationName(UlsanList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(UlsanList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longtitude(UlsanList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
+                            .longitude(UlsanList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -257,7 +257,7 @@ public class MakePlanerService {
                             .order(count)
                             .touristDestinationName(SejongList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(SejongList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longtitude(SejongList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
+                            .longitude(SejongList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -282,7 +282,7 @@ public class MakePlanerService {
                             .order(count)
                             .touristDestinationName(GyeonggidoList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(GyeonggidoList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longtitude(GyeonggidoList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
+                            .longitude(GyeonggidoList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -307,7 +307,7 @@ public class MakePlanerService {
                             .order(count)
                             .touristDestinationName(GangwondoList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(GangwondoList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longtitude(GangwondoList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
+                            .longitude(GangwondoList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -332,7 +332,7 @@ public class MakePlanerService {
                             .order(count)
                             .touristDestinationName(ChungbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(ChungbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longtitude(ChungbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
+                            .longitude(ChungbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -357,7 +357,7 @@ public class MakePlanerService {
                             .order(count)
                             .touristDestinationName(ChungnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(ChungnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longtitude(ChungnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
+                            .longitude(ChungnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -382,7 +382,7 @@ public class MakePlanerService {
                             .order(count)
                             .touristDestinationName(JeonbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(JeonbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longtitude(JeonbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
+                            .longitude(JeonbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -407,7 +407,7 @@ public class MakePlanerService {
                             .order(count)
                             .touristDestinationName(JeonnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(JeonnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longtitude(JeonnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
+                            .longitude(JeonnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -432,7 +432,7 @@ public class MakePlanerService {
                             .order(count)
                             .touristDestinationName(GyongbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(GyongbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longtitude(GyongbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
+                            .longitude(GyongbukList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -457,7 +457,7 @@ public class MakePlanerService {
                             .order(count)
                             .touristDestinationName(GyeongnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(GyeongnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longtitude(GyeongnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
+                            .longitude(GyeongnamList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;
@@ -482,7 +482,7 @@ public class MakePlanerService {
                             .order(count)
                             .touristDestinationName(JejuList.get(uniqueNumber.get(randomUniqueNumberCount)).getAttractionName())
                             .latitude(JejuList.get(uniqueNumber.get(randomUniqueNumberCount)).getLatitude())
-                            .longtitude(JejuList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongtitude())
+                            .longitude(JejuList.get(uniqueNumber.get(randomUniqueNumberCount)).getLongitude())
                             .build();
                     TravelPlaners.add(TravelPlan);
                     randomUniqueNumberCount++;

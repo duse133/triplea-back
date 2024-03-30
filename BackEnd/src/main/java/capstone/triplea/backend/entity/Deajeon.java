@@ -29,7 +29,7 @@ public class Deajeon {
     private Double latitude;
 
     @Column(nullable = false)
-    private Double longtitude;
+    private Double longitude;
 
     @Column(nullable = false)
     private Double area;
