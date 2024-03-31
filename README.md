@@ -38,6 +38,7 @@ Version Up Contents 0.2.0 -> 0.2.1
 Version Up Contents 0.2.1 -> 0.2.2
 =============
 * REST API 오류 메세지 추가 : E01(파라미터 누락), E02(데이터 부족)
+* REST API 성공 메세지 및 코드 추가 예정 : 아직 추가 안되서 성공되면 null값으로 들어옴
 
 Description (src/java/capstone/triplea/backend)
 =============
