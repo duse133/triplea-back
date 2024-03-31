@@ -1,6 +1,6 @@
 package capstone.triplea.backend.advice;
 
-import capstone.triplea.backend.dto.TravelPlanerListDTO;
+import capstone.triplea.backend.dto.TravelPlannerListDTO;
 import capstone.triplea.backend.exception.CParameterBound;
 import capstone.triplea.backend.exception.CParameterNotFound;
 import org.springframework.http.HttpStatus;
@@ -12,8 +12,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestControllerAdvice
 public class ExControllerAdvice extends ResponseEntityExceptionHandler {
     @ExceptionHandler(CParameterNotFound.class)
-    public ResponseEntity<TravelPlanerListDTO> errorNotFoundException() {
-        TravelPlanerListDTO errorResult = TravelPlanerListDTO.builder().
+    public ResponseEntity<TravelPlannerListDTO> errorNotFoundException() {
+        TravelPlannerListDTO errorResult = TravelPlannerListDTO.builder().
                 code("E01").
                 msg("필수 파라미터 누락").
                 build();
@@ -21,8 +21,8 @@ public class ExControllerAdvice extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(CParameterBound.class)
-    public ResponseEntity<TravelPlanerListDTO> errorIndexBoundException() {
-        TravelPlanerListDTO errorResult = TravelPlanerListDTO.builder().
+    public ResponseEntity<TravelPlannerListDTO> errorIndexBoundException() {
+        TravelPlannerListDTO errorResult = TravelPlannerListDTO.builder().
                 code("E02").
                 msg("데이터 부족, 강도와 일수를 더 낮추십시오.").
                 build();

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class TravelPlanerDTO {
+public class TravelPlannerDTO {
     private int order; //여행 루틴 순서
     private String day; //날짜
     private String touristDestinationName; //관광지 명
