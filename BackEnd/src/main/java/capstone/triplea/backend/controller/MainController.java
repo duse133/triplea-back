@@ -13,13 +13,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MainController {
 
-    private final MakePlannerService makePlanerService;
+    private final MakePlannerService makePlannerService;
 
     @GetMapping("/api/planner")
     public List<TravelPlannerListDTO> makePlanner(UserInputDTO userInputDTO){
         if(userInputDTO.getArea() == null || userInputDTO.getStrength() == null || userInputDTO.getDay() == null){
             throw new CParameterNotFound();
         }
-        return this.makePlanerService.makePlannerTourist(userInputDTO);
+        return this.makePlannerService.makePlannerTourist(userInputDTO);
     }
 }
