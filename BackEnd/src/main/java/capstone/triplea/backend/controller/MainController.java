@@ -39,9 +39,9 @@ public class MainController {
         return this.getTourListService.getAreaTourList(area);
     }
     
-//    // 군집 알고리즘 테스트용
-//    @GetMapping("/test")
-//    public List<PointDTO> test(){
-//        return this.makePlannerService.makeClustering();
-//    }
+    // 군집 알고리즘 테스트용
+    @GetMapping("/test")
+    public List<PointDTO> test(){
+        return this.makePlannerService.makeClustering();
+    }
 }

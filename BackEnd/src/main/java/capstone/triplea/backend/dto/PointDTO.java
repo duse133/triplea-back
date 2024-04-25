@@ -3,6 +3,9 @@ package capstone.triplea.backend.dto;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 public class PointDTO {
@@ -42,6 +45,31 @@ public class PointDTO {
         distance = 2 * radius * Math.asin(squareRoot);
 
         return distance;
+    }
+    
+    //중심점을 출발점으로 해당 군집에 있는 모든 지역들과의 거리를 계산하여 짧은 순으로 루트를 만들어줌
+    public static List<PointDTO> calculateShortestRoute(List<PointDTO> points) {
+        List<PointDTO> shortestRoute = new ArrayList<>();
+        shortestRoute.add(points.remove(0)); // Start with the first point <- 이게 출발지점인데 일단 중심점을 넣을 것임
+
+        while (!points.isEmpty()) {
+            PointDTO nearestPoint = null;
+            double shortestDistance = Double.MAX_VALUE;
+
+            PointDTO lastPoint = shortestRoute.get(shortestRoute.size() - 1);
+
+            for (PointDTO point : points) {
+                double distance = PointDTO.distanceInKilometerByHaversine(lastPoint.getLatitude(),lastPoint.getLongitude(), point.getLatitude(), point.getLongitude());
+                if (distance < shortestDistance) {
+                    shortestDistance = distance;
+                    nearestPoint = point;
+                }
+            }
+
+            shortestRoute.add(nearestPoint);
+            points.remove(nearestPoint);
+        }
+        return shortestRoute;
     }
 
 }

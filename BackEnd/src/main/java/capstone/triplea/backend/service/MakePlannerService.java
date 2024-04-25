@@ -40,8 +40,10 @@ public class MakePlannerService {
     //군집 형성 메소드(추후 군집내에 최단거리 알고리즘 만들어서 루트도 만들 예정)
     public List<PointDTO> makeClustering(){
 
-        List<PointDTO> centroids = new ArrayList<>();
-        List<PointDTO> points = new ArrayList<>();
+        List<PointDTO> centroids = new ArrayList<>(); //각 지역의 중심점
+        List<PointDTO> points = new ArrayList<>(); //각 지역의 여행지 정보들
+        List<PointDTO> clusterPoints = new ArrayList<>(); //각 지역의 여행지 정보들
+        List<PointDTO> shortPoints = new ArrayList<>(); //군집의 중심점을 시작으로 해당 군집내의 지역들의 최단거리를 통해 루트 생성
         
         //율산 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
         List<Ulsan> ulsanCenter = this.ulsanRepository.findByWeight(1);
@@ -55,8 +57,12 @@ public class MakePlannerService {
             points.add(new PointDTO(ulsan.getLatitude(), ulsan.getLongitude(), ulsan.getAttractionName()));
         }
 
-        //군집 중심점, 해당 지역의 여행지들, 군집수, 반복횟수들의 정보를 가지고 군집 형성
-        return kMeansService.clusterPoints(centroids, points, centroids.size(), 100);
+        //군집 중심점, 해당 지역의 여행지들, 군집수, 반복횟수들의 정보를 가지고 군집 형성(cluster : 중심점을 기준으로 구분짓는 군집)
+        clusterPoints = kMeansService.clusterPoints(centroids, points, centroids.size(), 100);
+
+        //사용자가 입력한 숙소정보를 가지고 해당 숙소에서 가장 가까운 군집의 중심점을 선택하여 해당 군집에서 중심점을 가지고 최단거리 계산을 통해 루트 생성
+
+        return clusterPoints;
     }
 
     //사용자가 입력한 3개의 데이터(지역, 여행일수, 여행강도)에 따라 3개의 랜덤한 관광지를 연결지어 여행 루틴을 만들어주는 로직

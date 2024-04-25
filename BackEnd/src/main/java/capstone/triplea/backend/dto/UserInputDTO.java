@@ -11,4 +11,5 @@ public class UserInputDTO {
     private String area;
     private String day;
     private String strength;
+    AccommodationDTO accommodationInfo;
 }
