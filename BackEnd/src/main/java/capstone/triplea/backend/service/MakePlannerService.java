@@ -1,5 +1,6 @@
 package capstone.triplea.backend.service;
 
+import capstone.triplea.backend.dto.PointDTO;
 import capstone.triplea.backend.dto.TravelPlannerDTO;
 import capstone.triplea.backend.dto.TravelPlannerListDTO;
 import capstone.triplea.backend.dto.UserInputDTO;
@@ -33,6 +34,30 @@ public class MakePlannerService {
     private final UlsanRepository ulsanRepository;
     int randomUniqueNumberCount = 0; //고유한 랜덤 번호
     ArrayList<Integer> uniqueNumbers = new ArrayList<>(); //고유한 숫자
+
+    private final KMeansService kMeansService; //해당 지역 우선순위 여행지를 기점으로 군집화
+    
+    //군집 형성 메소드(추후 군집내에 최단거리 알고리즘 만들어서 루트도 만들 예정)
+    public List<PointDTO> makeClustering(){
+
+        List<PointDTO> centroids = new ArrayList<>();
+        List<PointDTO> points = new ArrayList<>();
+        
+        //율산 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
+        List<Ulsan> ulsanCenter = this.ulsanRepository.findByWeight(1);
+        for (Ulsan ulsan : ulsanCenter) {
+            centroids.add(new PointDTO(ulsan.getLatitude(), ulsan.getLongitude()));
+        }
+        
+        //해당 지역의 데이터들을 가져옴
+        List<Ulsan> ulsanList = this.ulsanRepository.findAll();
+        for (Ulsan ulsan : ulsanList) {
+            points.add(new PointDTO(ulsan.getLatitude(), ulsan.getLongitude(), ulsan.getAttractionName()));
+        }
+
+        //군집 중심점, 해당 지역의 여행지들, 군집수, 반복횟수들의 정보를 가지고 군집 형성
+        return kMeansService.clusterPoints(centroids, points, centroids.size(), 100);
+    }
 
     //사용자가 입력한 3개의 데이터(지역, 여행일수, 여행강도)에 따라 3개의 랜덤한 관광지를 연결지어 여행 루틴을 만들어주는 로직
     public List<TravelPlannerListDTO> makePlannerTourist(UserInputDTO UserInputData){
