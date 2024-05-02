@@ -69,7 +69,6 @@ public class KMeansService {
         initializeCentroids(centroids);
         for (int iter = 0; iter < maxIterations; iter++) {
             assignCluster(pointDTOS);
-            updateCentroids(pointDTOS);
         }
         return pointDTOS;
     }

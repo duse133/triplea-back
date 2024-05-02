@@ -54,4 +54,7 @@ public class Deajeon {
     private String providerOrganization;
 
     private String managementOrganization;
+
+    @Column(nullable = false)
+    private int weight;
 }

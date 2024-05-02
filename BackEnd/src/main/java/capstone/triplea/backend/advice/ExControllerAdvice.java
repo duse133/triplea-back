@@ -24,7 +24,7 @@ public class ExControllerAdvice extends ResponseEntityExceptionHandler {
     public ResponseEntity<TravelPlannerListDTO> errorIndexBoundException() {
         TravelPlannerListDTO errorResult = TravelPlannerListDTO.builder().
                 code("E02").
-                msg("데이터 부족, 강도와 일수를 더 낮추십시오.").
+                msg("데이터 부족, 일수를 더 낮추십시오.").
                 build();
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResult);
     }
