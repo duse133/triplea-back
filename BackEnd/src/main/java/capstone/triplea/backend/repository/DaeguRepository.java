@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface DaeguRepository extends JpaRepository<Daegu, String>{
-    List<Daegu> findByWeight(int weight);
+    List<Daegu> findByPriority(int weight);
 }

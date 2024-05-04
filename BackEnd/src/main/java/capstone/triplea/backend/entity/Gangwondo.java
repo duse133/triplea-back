@@ -19,42 +19,16 @@ public class Gangwondo {
     private String attractionName;
 
     @Column(nullable = false)
-    private String districtClassification;
-
-    private String mapNameAddress;
-
-    private String numberAddress;
+    private String map_name_address;
 
     @Column(nullable = false)
     private Double latitude;
 
-    @Column(nullable = false)
     private Double longitude;
-
-    @Column(nullable = false)
-    private Double area;
-
-    private String publicConvenienceInfo;
-
-    private String accommodationInfo;
-
-    private String exerciseEntertainmentInfo;
-
-    private String recreationalCulturalInfo;
-
-    private String hospitalityInfo;
-
-    private String supportInfo;
 
     @Column(columnDefinition = "TEXT")
     private String introduction;
 
-    private String agencyPhoneNumber;
-
-    private String providerOrganization;
-
-    private String managementOrganization;
-
     @Column(nullable = false)
-    private int weight;
+    private int priority;
 }

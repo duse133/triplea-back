@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface GyenoggidoRepository extends JpaRepository<Gyeonggido, String> {
-    List<Gyeonggido> findByWeight(int weight);
+    List<Gyeonggido> findByPriority(int weight);
 }

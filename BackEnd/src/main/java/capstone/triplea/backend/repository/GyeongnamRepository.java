@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface GyeongnamRepository extends JpaRepository<Gyeongnam, String> {
-    List<Gyeongnam> findByWeight(int weight);
+    List<Gyeongnam> findByPriority(int weight);
 }

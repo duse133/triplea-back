@@ -49,7 +49,7 @@ public class MakePlannerService {
         switch (userInputData.getArea()) {
             case "서울" -> {
                 //서울 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
-                List<Seoul> seoulCenter = this.seoulRepository.findByWeight(1);
+                List<Seoul> seoulCenter = this.seoulRepository.findByPriority(1);
                 for (Seoul seoul : seoulCenter) {
                     centroids.add(new PointDTO(seoul.getLatitude(), seoul.getLongitude(), seoul.getAttractionName()));
                 }
@@ -62,7 +62,7 @@ public class MakePlannerService {
             }
             case "부산" -> {
                 //부산 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
-                List<Busan> busanCenter = this.busanRepository.findByWeight(1);
+                List<Busan> busanCenter = this.busanRepository.findByPriority(1);
                 for (Busan busan : busanCenter) {
                     centroids.add(new PointDTO(busan.getLatitude(), busan.getLongitude(), busan.getAttractionName()));
                 }
@@ -75,7 +75,7 @@ public class MakePlannerService {
             }
             case "대구" -> {
                 //대구 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
-                List<Daegu> daeguCenter = this.daeguRepository.findByWeight(1);
+                List<Daegu> daeguCenter = this.daeguRepository.findByPriority(1);
                 for (Daegu daegu : daeguCenter) {
                     centroids.add(new PointDTO(daegu.getLatitude(), daegu.getLongitude(), daegu.getAttractionName()));
                 }
@@ -88,7 +88,7 @@ public class MakePlannerService {
             }
             case "인천" -> {
                 //인천 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
-                List<Incheon> incheonCenter = this.incheonRepository.findByWeight(1);
+                List<Incheon> incheonCenter = this.incheonRepository.findByPriority(1);
                 for (Incheon incheon : incheonCenter) {
                     centroids.add(new PointDTO(incheon.getLatitude(), incheon.getLongitude(), incheon.getAttractionName()));
                 }
@@ -101,7 +101,7 @@ public class MakePlannerService {
             }
             case "광주" -> {
                 //광주 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
-                List<Gwangju> gwangjuCenter = this.gwangjuRepository.findByWeight(1);
+                List<Gwangju> gwangjuCenter = this.gwangjuRepository.findByPriority(1);
                 for (Gwangju gwangju : gwangjuCenter) {
                     centroids.add(new PointDTO(gwangju.getLatitude(), gwangju.getLongitude(), gwangju.getAttractionName()));
                 }
@@ -114,7 +114,7 @@ public class MakePlannerService {
             }
             case "대전" -> {
                 //대전 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
-                List<Deajeon> deajeonCenter = this.deajeonRepository.findByWeight(1);
+                List<Deajeon> deajeonCenter = this.deajeonRepository.findByPriority(1);
                 for (Deajeon deajeon : deajeonCenter) {
                     centroids.add(new PointDTO(deajeon.getLatitude(), deajeon.getLongitude(), deajeon.getAttractionName()));
                 }
@@ -127,7 +127,7 @@ public class MakePlannerService {
             }
             case "울산" -> {
                 //울산 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
-                List<Ulsan> ulsanCenter = this.ulsanRepository.findByWeight(1);
+                List<Ulsan> ulsanCenter = this.ulsanRepository.findByPriority(1);
                 for (Ulsan ulsan : ulsanCenter) {
                     centroids.add(new PointDTO(ulsan.getLatitude(), ulsan.getLongitude(), ulsan.getAttractionName()));
                 }
@@ -140,7 +140,7 @@ public class MakePlannerService {
             }
             case "세종" -> {
                 //세종 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
-                List<Sejong> sejongCenter = this.sejongRepository.findByWeight(1);
+                List<Sejong> sejongCenter = this.sejongRepository.findByPriority(1);
                 for (Sejong sejong : sejongCenter) {
                     centroids.add(new PointDTO(sejong.getLatitude(), sejong.getLongitude(), sejong.getAttractionName()));
                 }
@@ -153,7 +153,7 @@ public class MakePlannerService {
             }
             case "경기" -> {
                 //경기 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
-                List<Gyeonggido> gyeonggidoCenter = this.gyenoggidoRepository.findByWeight(1);
+                List<Gyeonggido> gyeonggidoCenter = this.gyenoggidoRepository.findByPriority(1);
                 for (Gyeonggido gyeonggido : gyeonggidoCenter) {
                     centroids.add(new PointDTO(gyeonggido.getLatitude(), gyeonggido.getLongitude(), gyeonggido.getAttractionName()));
                 }
@@ -166,7 +166,7 @@ public class MakePlannerService {
             }
             case "강원" -> {
                 //강원 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
-                List<Gangwondo> gangwondoCenter = this.gangwondoRepository.findByWeight(1);
+                List<Gangwondo> gangwondoCenter = this.gangwondoRepository.findByPriority(1);
                 for (Gangwondo gangwondo : gangwondoCenter) {
                     centroids.add(new PointDTO(gangwondo.getLatitude(), gangwondo.getLongitude(), gangwondo.getAttractionName()));
                 }
@@ -179,7 +179,7 @@ public class MakePlannerService {
             }
             case "충북" -> {
                 //충북 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
-                List<Chungbuk> chungbukCenter = this.chungbukRepository.findByWeight(1);
+                List<Chungbuk> chungbukCenter = this.chungbukRepository.findByPriority(1);
                 for (Chungbuk chungbuk : chungbukCenter) {
                     centroids.add(new PointDTO(chungbuk.getLatitude(), chungbuk.getLongitude(), chungbuk.getAttractionName()));
                 }
@@ -192,7 +192,7 @@ public class MakePlannerService {
             }
             case "충남" -> {
                 //충남 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
-                List<Chungnam> chungnamCenter = this.chungnamRepository.findByWeight(1);
+                List<Chungnam> chungnamCenter = this.chungnamRepository.findByPriority(1);
                 for (Chungnam chungnam : chungnamCenter) {
                     centroids.add(new PointDTO(chungnam.getLatitude(), chungnam.getLongitude(), chungnam.getAttractionName()));
                 }
@@ -205,7 +205,7 @@ public class MakePlannerService {
             }
             case "전북" -> {
                 //전북 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
-                List<Jeonbuk> jeonbukCenter = this.jeonbukRepository.findByWeight(1);
+                List<Jeonbuk> jeonbukCenter = this.jeonbukRepository.findByPriority(1);
                 for (Jeonbuk jeonbuk : jeonbukCenter) {
                     centroids.add(new PointDTO(jeonbuk.getLatitude(), jeonbuk.getLongitude(), jeonbuk.getAttractionName()));
                 }
@@ -218,7 +218,7 @@ public class MakePlannerService {
             }
             case "전남" -> {
                 //전남 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
-                List<Jeonnam> jeonnamCenter = this.jeonnamRepository.findByWeight(1);
+                List<Jeonnam> jeonnamCenter = this.jeonnamRepository.findByPriority(1);
                 for (Jeonnam jeonnam : jeonnamCenter) {
                     centroids.add(new PointDTO(jeonnam.getLatitude(), jeonnam.getLongitude(), jeonnam.getAttractionName()));
                 }
@@ -231,7 +231,7 @@ public class MakePlannerService {
             }
             case "경북" -> {
                 //경북 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
-                List<Gyongbuk> gyongbukCenter = this.gyongbukRepository.findByWeight(1);
+                List<Gyongbuk> gyongbukCenter = this.gyongbukRepository.findByPriority(1);
                 for (Gyongbuk gyongbuk : gyongbukCenter) {
                     centroids.add(new PointDTO(gyongbuk.getLatitude(), gyongbuk.getLongitude(), gyongbuk.getAttractionName()));
                 }
@@ -244,7 +244,7 @@ public class MakePlannerService {
             }
             case "경남" -> {
                 //경남 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
-                List<Gyeongnam> gyeongnamCenter = this.gyeongnamRepository.findByWeight(1);
+                List<Gyeongnam> gyeongnamCenter = this.gyeongnamRepository.findByPriority(1);
                 for (Gyeongnam gyeongnam : gyeongnamCenter) {
                     centroids.add(new PointDTO(gyeongnam.getLatitude(), gyeongnam.getLongitude(), gyeongnam.getAttractionName()));
                 }
@@ -257,7 +257,7 @@ public class MakePlannerService {
             }
             case "제주" -> {
                 //제주 데이터베이스의 weight 값이 1인 즉 중요도가 높은 지역 가져와서 중심점으로 설정
-                List<Jeju> jejuCenter = this.jejuRepository.findByWeight(1);
+                List<Jeju> jejuCenter = this.jejuRepository.findByPriority(1);
                 for (Jeju jeju : jejuCenter) {
                     centroids.add(new PointDTO(jeju.getLatitude(), jeju.getLongitude(), jeju.getAttractionName()));
                 }

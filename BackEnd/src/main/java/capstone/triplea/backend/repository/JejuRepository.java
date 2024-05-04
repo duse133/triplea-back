@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface JejuRepository extends JpaRepository<Jeju,String> {
-    List<Jeju> findByWeight(int weight);
+    List<Jeju> findByPriority(int weight);
 }

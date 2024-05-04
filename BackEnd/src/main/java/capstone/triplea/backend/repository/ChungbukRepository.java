@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ChungbukRepository extends JpaRepository<Chungbuk, String> {
-    List<Chungbuk> findByWeight(int weight);
+    List<Chungbuk> findByPriority(int weight);
 }

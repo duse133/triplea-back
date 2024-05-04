@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface JeonbukRepository extends JpaRepository<Jeonbuk, String> {
-    List<Jeonbuk> findByWeight(int weight);
+    List<Jeonbuk> findByPriority(int weight);
 }

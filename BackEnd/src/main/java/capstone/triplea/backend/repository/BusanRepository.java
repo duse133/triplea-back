@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface BusanRepository extends JpaRepository<Busan, String>{
-    List<Busan> findByWeight(int weight);
+    List<Busan> findByPriority(int weight);
 }

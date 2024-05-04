@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface IncheonRepository extends JpaRepository<Incheon, String> {
-    List<Incheon> findByWeight(int weight);
+    List<Incheon> findByPriority(int weight);
 }

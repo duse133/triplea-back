@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface UlsanRepository extends JpaRepository<Ulsan ,String> {
-    List<Ulsan> findByWeight(int weight);
+    List<Ulsan> findByPriority(int weight);
 }

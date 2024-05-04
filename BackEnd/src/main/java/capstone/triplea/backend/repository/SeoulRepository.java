@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface SeoulRepository extends JpaRepository<Seoul, String> {
-    List<Seoul> findByWeight(int weight);
+    List<Seoul> findByPriority(int weight);
 }

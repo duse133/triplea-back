@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface GwangjuRepository extends JpaRepository<Gwangju,String> {
-    List<Gwangju> findByWeight(int weight);
+    List<Gwangju> findByPriority(int weight);
 }

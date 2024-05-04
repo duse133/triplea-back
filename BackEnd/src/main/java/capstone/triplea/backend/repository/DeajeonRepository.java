@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface DeajeonRepository extends JpaRepository<Deajeon, String> {
-    List<Deajeon> findByWeight(int weight);
+    List<Deajeon> findByPriority(int weight);
 }
