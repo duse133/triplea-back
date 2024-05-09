@@ -348,7 +348,52 @@ public class MakePlannerService {
         }
 
         //해당군집의 중심점을 기준으로 최단거리 알고리즘으로 가장 짧은 거리의 루트 생성
+        System.out.println(clusterPoint.size());
+        List<PointDTO> shortPoint = new ArrayList<>();
         shortPoints = PointDTO.calculateShortestRoute(clusterPoint,closestPoint);
+
+        //사용자 입력 강도에 따라 여행지루트 갯수 조절(중간 일때는 그냥 냅둠, 약할때는 갯수 일당 4개까지, 강할때는 일당 7개 이상)
+        int dayPerCount = 0;
+
+        if(userInputData.getStrength().equals("약함")){
+            dayPerCount = Integer.parseInt(userInputData.getDay()) * 4;
+            //현재 루트의 여행지 갯수가 강도를 약함으로 설정한 갯수보다 큰 경우 해당 크기로 줄여야함
+            if(shortPoints.size() > dayPerCount){
+                for(int i =0; i<= dayPerCount; i++){
+                    shortPoint.add(shortPoints.get(i));
+                }
+                return PointDTO.distributePoints(shortPoint, Integer.parseInt(userInputData.getDay()), clusterPoints, centroids);
+            }
+        }else if (userInputData.getStrength().equals("강함")){
+            dayPerCount = Integer.parseInt(userInputData.getDay()) * 7;
+            while(shortPoints.size() <= dayPerCount) {
+                for(int i =0 ;i<centroids.size();i++){
+                    if(centroids.get(i).getCluster() == closestPoint.getCluster()){
+                        centroids.remove(i);
+                    }
+                }
+                if(centroids.isEmpty()){
+                    break;
+                }
+                closestPoint = centroids.get(0);
+                //closetPoint에 cluster 값이 초기화 되어 있음 따라서 추가해줘야함
+                for (PointDTO point : clusterPoints) {
+                    if (closestPoint.getTouristDestinationName().equals(point.getTouristDestinationName())) {
+                        closestPoint.setCluster(point.getCluster());
+                    }
+                }
+                //선택한 군집 번호로 이뤄진 군집정보를 모든 군집정보가 들어있는 clusterPoints에서 clusterPoint로 뽑기
+                for (PointDTO point : clusterPoints) {
+                    if (closestPoint.getCluster() == point.getCluster()) {
+                        shortPoints.add(point);
+                    }
+                }
+            }
+            shortPoint = PointDTO.calculateShortestRoute(shortPoints,closestPoint);
+            return PointDTO.distributePoints(shortPoint, Integer.parseInt(userInputData.getDay()), clusterPoints, centroids);
+        }else if (userInputData.getStrength().isEmpty()){
+            throw new CParameterNotFound();
+        }
 
         //추가적으로 루트를 생성했으면 해당 루트를 여행일수에 맞게 각 일수에 여행루트들을 조절해야함
         //일단 전체 거리를 계산하여 사용자가 입력한 일 수에 맞춰 거리를 짜르고 해당 거리에 있는 여행지를 해당 일에 포함시켜서 나눔(거리에 맞게 불규칙적으로 나눠지게 됨)

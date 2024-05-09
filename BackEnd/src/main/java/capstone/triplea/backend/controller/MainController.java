@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.json.JSONException;
 import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
-import java.net.URLEncoder;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @RestController
@@ -43,7 +43,7 @@ public class MainController {
 
     //관광공사 api 이미지 가져오기
     @GetMapping("api/getImageSource")
-    public ResponseCode getImage(@RequestParam String keyword) throws JSONException, IOException {
+    public ResponseCode getImage(@RequestParam String keyword) throws UnsupportedEncodingException {
         return getImageResource.ApiImageSource(keyword);
     }
 

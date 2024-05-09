@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'capstone.backend'
-version = '0.5.0'
+version = '0.6.0'
 
 java {
     sourceCompatibility = '17'
@@ -32,6 +32,7 @@ dependencies {
     implementation 'mysql:mysql-connector-java:8.0.33'
     runtimeOnly 'com.mysql:mysql-connector-j'
     implementation 'org.json:json:20210307'
+    implementation 'org.jsoup:jsoup:1.14.3'
 }
 
 tasks.named('test') {

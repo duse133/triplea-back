@@ -8,10 +8,11 @@ import lombok.Setter;
 @Setter
 @Builder
 public class TourListDTO {
-    private String code; //성공(S01), 오류(E01~E99)
+    private String code; // 성공(S01), 오류(E01~E99)
     private String msg; // 상태코드 상세 메세지
-    private String touristDestinationName; //관광지 명
-    private Double latitude; //해당 관광지 위도
-    private Double longitude; //해당 관광지 경도
+    private String touristDestinationName; // 관광지 명
+    private Double latitude; // 해당 관광지 위도
+    private Double longitude; // 해당 관광지 경도
     private String introduction; // 해당 관광지 설명
+    private String address; // 해당 관광지 도로명 주소
 }

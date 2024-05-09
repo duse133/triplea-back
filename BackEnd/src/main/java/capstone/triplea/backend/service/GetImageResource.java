@@ -1,91 +1,59 @@
 package capstone.triplea.backend.service;
 
 import capstone.triplea.backend.dto.ResponseCode;
-import capstone.triplea.backend.exception.CApiConnectionError;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.io.*;
 import java.net.URLEncoder;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import java.io.IOException;
 
 @Service
 public class GetImageResource {
-    public ResponseCode ApiImageSource(String keyword) throws IOException {
 
+    public ResponseCode ApiImageSource(String keyword) throws UnsupportedEncodingException {
         ResponseCode responseCode = new ResponseCode();
         // 키워드를 URL 인코딩
         String encodedKeyword = URLEncoder.encode(keyword, "UTF-8");
-
-        // API 요청 URL 생성
-        String apiUrl = String.format("https://apis.data.go.kr/B551011/PhotoGalleryService1/gallerySearchList1?serviceKey=tvxLAkccgL4jGXY8xkf%%2BW1D6ERENvDeWS6zyfwUFACQBQ2xAhKhUEhBq4QXCbVcy46GuPss%%2B%%2B88PrtzwY3csNw%%3D%%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&keyword=%s&_type=json", encodedKeyword);
-
-        StringBuilder result = new StringBuilder();
-
-        URL url = new URL(apiUrl);
-
-        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-        urlConnection.setRequestMethod("GET");
-
-        BufferedReader br;
-        br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), "UTF-8"));
-
-        String returnLine;
-        while ((returnLine = br.readLine()) != null) {
-            result.append(returnLine + "\n\r");
-        }
-        urlConnection.disconnect();
-
-        String galWebImageUrl = null;
-
-        //외부 공공 데이터 api 통신 오류 발생시
-        if(result.isEmpty()){
-            throw new CApiConnectionError();
-        }
+        String imageSourceUrl = null;
+        // 한국관광공사 사진갤러리 크롤링
+        String url = "https://phoko.visitkorea.or.kr/media/mediaList.kto?keyword=" + encodedKeyword;
         try {
-            // JSON 데이터를 ObjectMapper를 사용하여 JsonNode로 변환
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode rootNode = mapper.readTree(result.toString());
+            // Connect to the website and fetch the HTML content
+            Document doc = Jsoup.connect(url).get();
 
-            int totalCount = rootNode
-                    .path("response")
-                    .path("body")
-                    .path("totalCount")
-                    .asInt();
-
-            if(totalCount == 0){
-                responseCode.setCode("E10");
-                responseCode.setMsg("해당 이미지를 찾을 수 없음");
-                return responseCode;
+            // Select the HTML elements containing image URLs
+            Elements imageElements = doc.select("img[src]");
+            // Iterate through the image elements and print the image source URLs
+            for (Element imageElement : imageElements) {
+                // Get the image source URL
+                String imageUrl = imageElement.attr("src");
+                // Print the image source URL
+                if (imageUrl.startsWith("https://conlab.visitkorea.or.kr/api/depot/public/depot-flow/query/download-image/")) {
+                    imageSourceUrl = imageUrl;
+                    break;
+                }
             }
-
-            // "galWebImageUrl" 필드 값 추출
-            galWebImageUrl = rootNode
-                    .path("response")
-                    .path("body")
-                    .path("items")
-                    .path("item")
-                    .get(0)
-                    .path("galWebImageUrl")
-                    .asText();
-
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         
-        if(galWebImageUrl.isEmpty()){
+        //해당 이미지를 못찾을 시에
+        if(imageSourceUrl == null){
             responseCode.setCode("E10");
             responseCode.setMsg("해당 이미지를 찾을 수 없음");
             return responseCode;
         }
 
-        responseCode.setCode("E00");
+        responseCode.setCode("S01");
         responseCode.setMsg("성공");
-        responseCode.setUrl(galWebImageUrl);
+        responseCode.setUrl(imageSourceUrl);
+
         return responseCode;
     }
+
 }

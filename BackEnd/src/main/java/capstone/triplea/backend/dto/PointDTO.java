@@ -194,7 +194,6 @@ public class PointDTO {
                     center = centroids.get(i);
                 }
             }
-            System.out.println(center.touristDestinationName);
 
             List<PointDTO> shortestRoot = PointDTO.calculateShortestRoute(clusterPoint, center);
 

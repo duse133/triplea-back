@@ -49,6 +49,7 @@ public class GetTourListService {
                         .longitude(seoul.getLongitude())
                         .latitude(seoul.getLatitude())
                         .introduction(seoul.getIntroduction())
+                        .address(seoul.getMap_name_address())
                         .build();
                 tourList.add(tourListInfo);
             }
@@ -65,6 +66,7 @@ public class GetTourListService {
                         .longitude(busan.getLongitude())
                         .latitude(busan.getLatitude())
                         .introduction(busan.getIntroduction())
+                        .address(busan.getMap_name_address())
                         .build();
                 tourList.add(tourListInfo);
             }
@@ -81,6 +83,7 @@ public class GetTourListService {
                         .longitude(chungnam.getLongitude())
                         .latitude(chungnam.getLatitude())
                         .introduction(chungnam.getIntroduction())
+                        .address(chungnam.getMap_name_address())
                         .build();
                 tourList.add(tourListInfo);
             }
@@ -97,6 +100,7 @@ public class GetTourListService {
                         .longitude(chungbuk.getLongitude())
                         .latitude(chungbuk.getLatitude())
                         .introduction(chungbuk.getIntroduction())
+                        .address(chungbuk.getMap_name_address())
                         .build();
                 tourList.add(tourListInfo);
             }
@@ -113,6 +117,7 @@ public class GetTourListService {
                         .longitude(daegu.getLongitude())
                         .latitude(daegu.getLatitude())
                         .introduction(daegu.getIntroduction())
+                        .address(daegu.getMap_name_address())
                         .build();
                 tourList.add(tourListInfo);
             }
@@ -129,6 +134,7 @@ public class GetTourListService {
                         .longitude(deajeon.getLongitude())
                         .latitude(deajeon.getLatitude())
                         .introduction(deajeon.getIntroduction())
+                        .address(deajeon.getMap_name_address())
                         .build();
                 tourList.add(tourListInfo);
             }
@@ -145,6 +151,7 @@ public class GetTourListService {
                         .longitude(gangwondo.getLongitude())
                         .latitude(gangwondo.getLatitude())
                         .introduction(gangwondo.getIntroduction())
+                        .address(gangwondo.getMap_name_address())
                         .build();
                 tourList.add(tourListInfo);
             }
@@ -161,6 +168,7 @@ public class GetTourListService {
                         .longitude(gwangju.getLongitude())
                         .latitude(gwangju.getLatitude())
                         .introduction(gwangju.getIntroduction())
+                        .address(gwangju.getMap_name_address())
                         .build();
                 tourList.add(tourListInfo);
             }
@@ -177,6 +185,7 @@ public class GetTourListService {
                         .longitude(gyeonggido.getLongitude())
                         .latitude(gyeonggido.getLatitude())
                         .introduction(gyeonggido.getIntroduction())
+                        .address(gyeonggido.getMap_name_address())
                         .build();
                 tourList.add(tourListInfo);
             }
@@ -193,6 +202,7 @@ public class GetTourListService {
                         .longitude(gyeongnam.getLongitude())
                         .latitude(gyeongnam.getLatitude())
                         .introduction(gyeongnam.getIntroduction())
+                        .address(gyeongnam.getMap_name_address())
                         .build();
                 tourList.add(tourListInfo);
             }
@@ -209,6 +219,7 @@ public class GetTourListService {
                         .longitude(gyongbuk.getLongitude())
                         .latitude(gyongbuk.getLatitude())
                         .introduction(gyongbuk.getIntroduction())
+                        .address(gyongbuk.getMap_name_address())
                         .build();
                 tourList.add(tourListInfo);
             }
@@ -225,6 +236,7 @@ public class GetTourListService {
                         .longitude(incheon.getLongitude())
                         .latitude(incheon.getLatitude())
                         .introduction(incheon.getIntroduction())
+                        .address(incheon.getMap_name_address())
                         .build();
                 tourList.add(tourListInfo);
             }
@@ -241,6 +253,7 @@ public class GetTourListService {
                         .longitude(jeju.getLongitude())
                         .latitude(jeju.getLatitude())
                         .introduction(jeju.getIntroduction())
+                        .address(jeju.getMap_name_address())
                         .build();
                 tourList.add(tourListInfo);
             }
@@ -257,6 +270,7 @@ public class GetTourListService {
                         .longitude(jeonbuk.getLongitude())
                         .latitude(jeonbuk.getLatitude())
                         .introduction(jeonbuk.getIntroduction())
+                        .address(jeonbuk.getMap_name_address())
                         .build();
                 tourList.add(tourListInfo);
             }
@@ -273,6 +287,7 @@ public class GetTourListService {
                         .longitude(jeonnam.getLongitude())
                         .latitude(jeonnam.getLatitude())
                         .introduction(jeonnam.getIntroduction())
+                        .address(jeonnam.getMap_name_address())
                         .build();
                 tourList.add(tourListInfo);
             }
@@ -289,6 +304,7 @@ public class GetTourListService {
                         .longitude(sejong.getLongitude())
                         .latitude(sejong.getLatitude())
                         .introduction(sejong.getIntroduction())
+                        .address(sejong.getMap_name_address())
                         .build();
                 tourList.add(tourListInfo);
             }
@@ -305,6 +321,7 @@ public class GetTourListService {
                         .longitude(ulsan.getLongitude())
                         .latitude(ulsan.getLatitude())
                         .introduction(ulsan.getIntroduction())
+                        .address(ulsan.getMap_name_address())
                         .build();
                 tourList.add(tourListInfo);
             }
