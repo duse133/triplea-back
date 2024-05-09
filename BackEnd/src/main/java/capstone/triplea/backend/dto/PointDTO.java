@@ -12,6 +12,7 @@ public class PointDTO {
     private double latitude;
     private double longitude;
     private String touristDestinationName;
+    private String information;
     private int cluster;
 
     public PointDTO(double latitude, double longitude) {
@@ -20,11 +21,12 @@ public class PointDTO {
         this.cluster = -1; // Initially not assigned to any cluster
     }
 
-    public PointDTO(double latitude, double longitude, String touristDestinationName) {
+    public PointDTO(double latitude, double longitude, String touristDestinationName, String introduction) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.touristDestinationName = touristDestinationName;
         this.cluster = -1; // Initially not assigned to any cluster
+        this.information = introduction;
     }
 
     // Method to calculate distance between two points using Haversine formula
@@ -120,18 +122,21 @@ public class PointDTO {
             if (currentDayDistance <= distancePerDay && count <= totalcount) {
                 travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(i+1).
                         latitude(points.get(i).latitude).longitude(points.get(i).longitude).
+                        information(points.get(i).information).
                         touristDestinationName(points.get(i).touristDestinationName).build());
                 count++;
             } else {
                 if(travelPlanners.isEmpty()){
                     travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(i+1).
                             latitude(points.get(i).latitude).longitude(points.get(i).longitude).
+                            information(points.get(i).information).
                             touristDestinationName(points.get(i).touristDestinationName).build());
                     count++;
                 }
                 else if(travelPlanners.get(i-1).getDay() == null) {
                     travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(i+1).
                             latitude(points.get(i).latitude).longitude(points.get(i).longitude).
+                            information(points.get(i).information).
                             touristDestinationName(points.get(i).touristDestinationName).build());
                     count++;
                 }
@@ -142,6 +147,7 @@ public class PointDTO {
                     }
                     travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(i+1).
                             latitude(points.get(i).latitude).longitude(points.get(i).longitude).
+                            information(points.get(i).information).
                             touristDestinationName(points.get(i).touristDestinationName).build());
                     currentDayDistance = distance;
                     count=1;
@@ -152,6 +158,7 @@ public class PointDTO {
         if(nextPoint != null){
             travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(points.size()).
                     latitude(nextPoint.getLatitude()).longitude(nextPoint.getLongitude()).
+                    information(nextPoint.information).
                     touristDestinationName(nextPoint.touristDestinationName).build());
         }
         
@@ -206,6 +213,7 @@ public class PointDTO {
                 if(currentDayDistance <= distancePerDay && count<=totalcount){
                     travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(total+i+1).
                             latitude(shortestRoot.get(i).latitude).longitude(shortestRoot.get(i).longitude).
+                            information(points.get(i).information).
                             touristDestinationName(shortestRoot.get(i).touristDestinationName).build());
                     count++;
                 } else {
@@ -219,6 +227,7 @@ public class PointDTO {
 
                     travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(total + i + 1).
                             latitude(shortestRoot.get(i).latitude).longitude(shortestRoot.get(i).longitude).
+                            information(points.get(i).information).
                             touristDestinationName(shortestRoot.get(i).touristDestinationName).build());
                     currentDayDistance = distance;
                     count = 1;
