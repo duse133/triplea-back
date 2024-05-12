@@ -2,9 +2,7 @@ package capstone.triplea.backend.advice;
 
 import capstone.triplea.backend.dto.ResponseCode;
 import capstone.triplea.backend.dto.TravelPlannerListDTO;
-import capstone.triplea.backend.exception.CApiConnectionError;
-import capstone.triplea.backend.exception.CParameterBound;
-import capstone.triplea.backend.exception.CParameterNotFound;
+import capstone.triplea.backend.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -36,6 +34,22 @@ public class ExControllerAdvice extends ResponseEntityExceptionHandler {
         ResponseCode responseCode = new ResponseCode();
         responseCode.setCode("E03");
         responseCode.setMsg("외부 API 통신 오류");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseCode);
+    }
+
+    @ExceptionHandler(CWrongPWError.class)
+    public ResponseEntity<ResponseCode> errorWrongPasswordException() {
+        ResponseCode responseCode = new ResponseCode();
+        responseCode.setCode("E04");
+        responseCode.setMsg("비밀번호가 틀렸습니다.");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseCode);
+    }
+
+    @ExceptionHandler(CNoticeNotFound.class)
+    public ResponseEntity<ResponseCode> errorNoticeNotFoundException(){
+        ResponseCode responseCode = new ResponseCode();
+        responseCode.setCode("E05");
+        responseCode.setMsg("게시물 정보를 찾을 수 없습니다.");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseCode);
     }
 }
