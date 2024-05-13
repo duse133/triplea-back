@@ -31,10 +31,11 @@ public class NoticeBoardService {
     }
 
     //게시판 글 작성
-    public NoticeBoardDTO makeNotice(String title, String contents, String password){
+    public NoticeBoardDTO makeNotice(String title, String date, String contents, String password){
         String encryptedPassword = hashPassword(password);
         NoticeBoard newNotice = NoticeBoard.builder()
                 .title(title)
+                .date(date)
                 .contents(contents)
                 .password(encryptedPassword)
                 .build();
@@ -72,6 +73,7 @@ public class NoticeBoardService {
         return NoticeBoardDTO.builder()
                 .id(noticeBoard.getId())
                 .title(noticeBoard.getTitle())
+                .date(noticeBoard.getDate())
                 .contents(noticeBoard.getContents())
                 .password(noticeBoard.getPassword())
                 .build();

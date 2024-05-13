@@ -18,6 +18,9 @@ public class NoticeBoard {
     @Column(nullable = false)
     private String title;
 
+    @Column(nullable = false)
+    private String date;
+
     @Column(columnDefinition = "TEXT", nullable = false)
     private String contents;
 

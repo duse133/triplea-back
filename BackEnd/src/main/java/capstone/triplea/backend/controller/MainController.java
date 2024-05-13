@@ -52,8 +52,8 @@ public class MainController {
     //게시판 DB에 저장할 게시판 제목, 게시판내용인 여행루트, 비밀번호(암호화 시켜야함)
     //이미 게시판에 있는 정보이면 그 비밀번호와 수정할 정보의 비밀번호와 비교하여 맞으면 수정 틀리면 비밀번호 틀렸다고 오류메세지를 보냄
     @PostMapping("/api/notice_boards")
-    public void insertBoard(@RequestParam String title, @RequestParam String contents, @RequestParam String password) {
-        noticeBoardService.makeNotice(title, contents, password);
+    public void insertBoard(@RequestParam String title, @RequestParam String date, @RequestParam String contents, @RequestParam String password) {
+        noticeBoardService.makeNotice(title, date, contents, password);
     }
 
     //게시판 DB에 저장되어있는 정보를 제거
