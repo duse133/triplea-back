@@ -75,6 +75,19 @@ Version Up Contents 0.6.0 -> 0.6.1
 =============
 * 여행루트에 설명 추가
 * 강도 : 약함이랑 중간이랑 차이점이 없음 하나로 합칠 예정 보통으로, 강함은 무조건 일단 일당 루트 7개 이상, 보통은 일당 루트 음
+
+Version Up Contents 0.6.0 -> 0.7.0
+=============
+* 게시판 DB 생성 : id, title, content, password
+* 프로젝트 파일 게시판 관련 파일 생성 : Entity, Repository
+* 게시판 서비스 로직 구현
+
+Version Up Contents 0.7.0 -> 0.8.0
+=============
+* 게시판 DB 추가 : 기존에서 date(날짜) 추가
+* 외부 서버 띄우기용 설정 : MySQL
+* 프로젝트 파일 : 기존 로컬호스트의 MySQL 유지
+* Jar(배포 파일) : 외부 서버의 MySQL로 변경
 * 루트 형성 알고리즘 변경 예정(0.9.0으로 할 예정)
 
 Description (src/java/capstone/triplea/backend)
