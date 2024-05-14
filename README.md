@@ -84,6 +84,12 @@ Version Up Contents 0.6.1 -> 0.7.0
 * 게시판 통신 API 설정
 * DB 수정 : 위도,경도 없는 여행지 수정
 
+Version Up Contents 0.7.0 -> 0.8.0
+=============
+* 게시판 DB 추가 : date 추가
+* 백엔드 서버 띄우기 : MySQL 로그인 설정 변경
+* 루트 형성 알고리즘 변경 예정(0.9.0으로 할 예정)
+
 Description (src/java/capstone/triplea/backend)
 =============
 * config - WebConfig.java
