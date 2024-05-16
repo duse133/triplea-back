@@ -31,7 +31,7 @@ public class MainController {
     // 군집으로 만들고 최단거리 알고리즘을 통해 여행 루트 생성
     @GetMapping("/api/planners")
     public TravelPlannerListDTO makePlanners(UserInputDTO userInputDTO) {
-        if (userInputDTO.getArea() == null || userInputDTO.getDay() == null) {
+        if (userInputDTO.getArea() == null || userInputDTO.getDay() == null || userInputDTO.getAccommodationName() == null) {
             throw new CParameterNotFound();
         }
         TravelPlannerListDTO TravelPlannerList = new TravelPlannerListDTO();
