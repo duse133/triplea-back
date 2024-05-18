@@ -84,6 +84,43 @@ public class PointDTO {
         }
         return shortestRoute;
     }
+
+    //중심점을 출발점으로 해당 군집에 있는 모든 지역들과의 거리를 계산하여 짧은 순으로 루트를 만들어줌
+    public static List<PointDTO> calculateShortestRouteCount(List<PointDTO> points, PointDTO CenterPoints, int totalCount) {
+        List<PointDTO> shortestRoute = new ArrayList<>();
+        //현재 군집에 중심점이 포함되어 있으니 군집의 중심점이 출발점이기에 일단 제거
+        for(int i =0; i<points.size();i++){
+            if(CenterPoints.touristDestinationName.equals(points.get(i).touristDestinationName)){
+                shortestRoute.add(points.get(i));
+                points.remove(points.get(i));
+            }
+        }
+        // 일단 먼저 출발점인 중심점 추가
+        if(shortestRoute.isEmpty()){
+            shortestRoute.add(CenterPoints);
+        }
+        int count = 0;
+        //출발점(가까운지점)과 다음지점간의 짧은 거리를 선택해서 짧은순서대로 루트 형성
+        while (!points.isEmpty() || count <= totalCount) {
+            PointDTO nearestPoint = null;
+            double shortestDistance = Double.MAX_VALUE;
+            count++;
+
+            PointDTO lastPoint = shortestRoute.get(shortestRoute.size() - 1);
+
+            for (PointDTO point : points) {
+                double distance = PointDTO.distanceInKilometerByHaversine(lastPoint.getLatitude(),lastPoint.getLongitude(), point.getLatitude(), point.getLongitude());
+                if (distance < shortestDistance) {
+                    shortestDistance = distance;
+                    nearestPoint = point;
+                }
+            }
+
+            shortestRoute.add(nearestPoint);
+            points.remove(nearestPoint);
+        }
+        return shortestRoute;
+    }
     
     //현재 루트의 총합 거리
     public static double calculateTotalDistance(List<PointDTO> points) {
