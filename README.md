@@ -84,15 +84,7 @@ Version Up Contents 0.6.0 -> 0.7.0
 
 Version Up Contents 0.7.0 -> 0.8.0
 =============
-* 게시판 DB 추가 : 기존에서 date(날짜) 추가
-* 외부 서버 띄우기용 설정 : MySQL
-* 프로젝트 파일 : 기존 로컬호스트의 MySQL 유지
-* Jar(배포 파일) : 외부 서버의 MySQL로 변경
-* 루트 형성 알고리즘 변경 예정(0.9.0으로 할 예정)
-
-Version Up Contents 0.8.0 -> 0.8.1
-=============
-* 예외처리 추가 : 숙소정보가 null이 되면 필수파라미터 누락 예외처리
+택
 
 Description (src/java/capstone/triplea/backend)
 =============
