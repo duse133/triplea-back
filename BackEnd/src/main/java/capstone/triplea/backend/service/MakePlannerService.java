@@ -269,7 +269,6 @@ public class MakePlannerService {
                 }
             }
         }
-
         //군집 중심점, 해당 지역의 여행지들, 군집수, 반복횟수들의 정보를 가지고 군집 형성(cluster : 중심점을 기준으로 구분짓는 군집)
         clusterPoints = kMeansService.clusterPoints(centroids, points, centroids.size(), 100);
 
@@ -354,36 +353,43 @@ public class MakePlannerService {
         //사용자 입력 강도에 따라 여행지루트 갯수 조절(보통는 갯수 일당 4개까지, 강할때는 일당 7개 이상)
         int dayPerCount = 0;
 
-        //--수정사항--
-        //사용자가 입력한 숙소 정보를 가지고 해당 숙소에서 가장 가까운 군집의 중심점 선택까지는 수정할 필요 없음
-        //사용자가 아직 숙소정보를 입력하지 않았다면 군집화된것 중 랜덤으로 선택까지도 수정할 필요없음
-        //강도중 보통은 그대로 원래 로직 그대로 돌리고 강함일때 만 수정하면 됨
-        //각 중심점(중요도가 높은 여행지)들을 첫 시작점을 가장가까운곳 아니면 랜덤으로 선택한곳을 중심점에서 제외한 후 중심점끼리 짧은 루트 형성(순서)
-        //그 후 짧게 형성된 루트들이 해당 군집들의 중심이므로 하루당 가야하는 여행지 갯수 9개 이상이 되게끔 각 중심점들의 군집루트 형성
-        //그리고 모든 것들을 합쳐서 짧은 루트 재설정(각 중심점과 해당하는 군집들중 짧은 거리에 있는 여행지들)
-        //루트가 형성되고 나면 이제 일수별로 루트를 일정하게 짜름(하루당 km제한 두어서 + 골고루 분배)
+        //강도가 보통일때는 숙소에서 가장 가까운 중심점을 골라 해당 중심점에 속해있는 군집에서 짧은 루트를 만들어서 루트를 형성
+        //강도가 강함일때는 중요도가 높은 여행지를 루트로 만들어 놓고 하루에 7개씩 돌 수 있게 중심점 근처에 가까운 여행지를 골라 루트를 형성
+        //아직 강도 강함일때 숙소와 숙소를 고르지 않았을때 차별점 안둠
+        //지금은 강도 강함일때 숙소에 상관없이 계속 같은 순서로 돔(여행지구성은 바뀔수는 있으나 중심점의 순서를 숙소에 맞춰 바꿔야함)
 
-        if(userInputData.getStrength().equals("보통")){
+        if(userInputData.getStrength().equals("3")){
             dayPerCount = Integer.parseInt(userInputData.getDay()) * 4;
             //현재 루트의 여행지 갯수가 설정한 갯수보다 큰 경우 해당 크기로 줄여야함
             if(shortPoints.size() > dayPerCount){
                 for(int i =0; i<= dayPerCount; i++){
                     shortPoint.add(shortPoints.get(i));
                 }
-                return PointDTO.distributePoints(shortPoint, Integer.parseInt(userInputData.getDay()), clusterPoints, centroids);
+                return PointDTO.distributePoints(shortPoint, Integer.parseInt(userInputData.getDay()), clusterPoints, centroids, userInputData.getStrength());
             }
-        }else if (userInputData.getStrength().equals("강함")){
+        }else if (userInputData.getStrength().equals("4")){
             dayPerCount = Integer.parseInt(userInputData.getDay()) * 7;
-            List<List<PointDTO>> centerPointsList = new ArrayList<>();
-//            for(int i = 0; i < centroids.size(); i++){
-//                shortPoint.add(shortPoints.get(i));
-//                for(int j =0; j < clusterPoints.size(); j++){
-//                    if(clusterPoints.get(i).getCluster() == i){
-//                        centerPointsList.get(i).add(i, );
-//                    }
-//                }
-//            }
-//            PointDTO.calculateShortestRouteCount()
+            
+            //최소 각 중요도에서 가까운 여행지를 고르는 갯수
+            int lesatCount = dayPerCount / centroids.size() + 1;
+            //일단 중요도가 높은 여행지 루트 추가
+            shortPoint.addAll(centroids);
+            for(int j =0 ; j<centroids.size(); j++){
+                for(int i =0 ; i<points.size(); i++){
+                    // points는 각 지역의 모든 여행지 정보로 이미 만들어진 루트를 제외시킴(중복을 피하기 위함)
+                    for(int k =0; k<shortPoint.size(); k++){
+                        if(shortPoint.get(k).getTouristDestinationName().equals(points.get(i).getTouristDestinationName())){
+                            points.remove(i);
+                        }
+                    }
+                }
+                shortPoint.addAll(PointDTO.calculateShortestRouteCount(points, centroids.get(j),lesatCount));
+            }
+            List<PointDTO> shortRoute = new ArrayList<>();
+
+            shortRoute = PointDTO.calculateShortestRoute(shortPoint, closestPoint);
+
+            return PointDTO.distributePoints(shortRoute, Integer.parseInt(userInputData.getDay()), points, centroids, userInputData.getStrength());
         }else if (userInputData.getStrength().isEmpty()){
             throw new CParameterNotFound();
         }
@@ -391,6 +397,6 @@ public class MakePlannerService {
         //추가적으로 루트를 생성했으면 해당 루트를 여행일수에 맞게 각 일수에 여행루트들을 조절해야함
         //일단 전체 거리를 계산하여 사용자가 입력한 일 수에 맞춰 거리를 짜르고 해당 거리에 있는 여행지를 해당 일에 포함시켜서 나눔(거리에 맞게 불규칙적으로 나눠지게 됨)
         //최종적으로 유저가 입력한 일수로 쪼개고 순서까지 정해진 루트 1개 만들어서 리턴
-        return PointDTO.distributePoints(shortPoints, Integer.parseInt(userInputData.getDay()), clusterPoints, centroids);
+        return PointDTO.distributePoints(shortPoints, Integer.parseInt(userInputData.getDay()), clusterPoints, centroids, userInputData.getStrength());
     }
 }

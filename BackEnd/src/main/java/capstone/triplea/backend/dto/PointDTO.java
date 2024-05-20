@@ -88,24 +88,16 @@ public class PointDTO {
     //중심점을 출발점으로 해당 군집에 있는 모든 지역들과의 거리를 계산하여 짧은 순으로 루트를 만들어줌
     public static List<PointDTO> calculateShortestRouteCount(List<PointDTO> points, PointDTO CenterPoints, int totalCount) {
         List<PointDTO> shortestRoute = new ArrayList<>();
-        //현재 군집에 중심점이 포함되어 있으니 군집의 중심점이 출발점이기에 일단 제거
-        for(int i =0; i<points.size();i++){
-            if(CenterPoints.touristDestinationName.equals(points.get(i).touristDestinationName)){
-                shortestRoute.add(points.get(i));
-                points.remove(points.get(i));
-            }
-        }
         // 일단 먼저 출발점인 중심점 추가
         if(shortestRoute.isEmpty()){
             shortestRoute.add(CenterPoints);
         }
         int count = 0;
         //출발점(가까운지점)과 다음지점간의 짧은 거리를 선택해서 짧은순서대로 루트 형성
-        while (!points.isEmpty() || count <= totalCount) {
+        while (!points.isEmpty() && count < totalCount) {
             PointDTO nearestPoint = null;
             double shortestDistance = Double.MAX_VALUE;
             count++;
-
             PointDTO lastPoint = shortestRoute.get(shortestRoute.size() - 1);
 
             for (PointDTO point : points) {
@@ -119,6 +111,13 @@ public class PointDTO {
             shortestRoute.add(nearestPoint);
             points.remove(nearestPoint);
         }
+
+        for(int i =0; i<shortestRoute.size(); i++){
+            if(shortestRoute.get(i).getTouristDestinationName().equals(CenterPoints.getTouristDestinationName())){
+                shortestRoute.remove(i);
+            }
+        }
+
         return shortestRoute;
     }
     
@@ -136,7 +135,7 @@ public class PointDTO {
     }
 
     //총 거리를 여행일수로 나눠서 나눈 거리의 여행지를 해당 일수로 포함시켜 루트 완성(여행 일수에 맞게 나눠지게됨)
-    public static List<TravelPlannerDTO> distributePoints(List<PointDTO> points, int numDays, List<PointDTO> clusterPoints, List<PointDTO> centroids) {
+    public static List<TravelPlannerDTO> distributePoints(List<PointDTO> points, int numDays, List<PointDTO> clusterPoints, List<PointDTO> centroids, String strength) {
         double totalDistance = calculateTotalDistance(points);
         
         //하루에 이동할 거리 = 총거리/일수
@@ -151,46 +150,91 @@ public class PointDTO {
         double currentDayDistance = 0;
         PointDTO nextPoint = null;
         //총거리를 여행일수로 나누고 나눈 Km에 따라 해당 일 수에 여행지 정보들을 추가
-        for (int i = 0; i < points.size()-1; i++) {
-            PointDTO currentPoint = points.get(i);
-            nextPoint = points.get(i + 1);
-            double distance = distanceInKilometerByHaversine(currentPoint.getLatitude(),currentPoint.getLongitude(),nextPoint.getLatitude(),nextPoint.getLongitude());
-            currentDayDistance += distance;
-            if (currentDayDistance <= distancePerDay && count <= totalcount) {
-                travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(i+1).
-                        latitude(points.get(i).latitude).longitude(points.get(i).longitude).
-                        information(points.get(i).information).
-                        touristDestinationName(points.get(i).touristDestinationName).build());
-                count++;
-            } else {
-                if(travelPlanners.isEmpty()){
+        if(strength.equals("4")){
+            for (int i = 0; i < points.size()-1; i++) {
+                PointDTO currentPoint = points.get(i);
+                nextPoint = points.get(i + 1);
+                double distance = distanceInKilometerByHaversine(currentPoint.getLatitude(),currentPoint.getLongitude(),nextPoint.getLatitude(),nextPoint.getLongitude());
+                currentDayDistance += distance;
+                if (currentDayDistance <= distancePerDay) {
                     travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(i+1).
                             latitude(points.get(i).latitude).longitude(points.get(i).longitude).
                             information(points.get(i).information).
                             touristDestinationName(points.get(i).touristDestinationName).build());
                     count++;
-                }
-                else if(travelPlanners.get(i-1).getDay() == null) {
-                    travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(i+1).
-                            latitude(points.get(i).latitude).longitude(points.get(i).longitude).
-                            information(points.get(i).information).
-                            touristDestinationName(points.get(i).touristDestinationName).build());
-                    count++;
-                }
-                else{
-                    //설정한 일수보다 더 높게 되면 안됨
-                    if(day < numDays){
-                        day++;
+                } else {
+                    if(travelPlanners.isEmpty()){
+                        travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(i+1).
+                                latitude(points.get(i).latitude).longitude(points.get(i).longitude).
+                                information(points.get(i).information).
+                                touristDestinationName(points.get(i).touristDestinationName).build());
+                        count++;
                     }
-                    travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(i+1).
-                            latitude(points.get(i).latitude).longitude(points.get(i).longitude).
-                            information(points.get(i).information).
-                            touristDestinationName(points.get(i).touristDestinationName).build());
-                    currentDayDistance = distance;
-                    count=1;
+                    else if(travelPlanners.get(i-1).getDay() == null) {
+                        travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(i+1).
+                                latitude(points.get(i).latitude).longitude(points.get(i).longitude).
+                                information(points.get(i).information).
+                                touristDestinationName(points.get(i).touristDestinationName).build());
+                        count++;
+                    }
+                    else{
+                        //설정한 일수보다 더 높게 되면 안됨
+                        if(day < numDays){
+                            day++;
+                        }
+                        travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(i+1).
+                                latitude(points.get(i).latitude).longitude(points.get(i).longitude).
+                                information(points.get(i).information).
+                                touristDestinationName(points.get(i).touristDestinationName).build());
+                        currentDayDistance = distance;
+                        count=1;
+                    }
                 }
             }
         }
+        else{
+            for (int i = 0; i < points.size()-1; i++) {
+                PointDTO currentPoint = points.get(i);
+                nextPoint = points.get(i + 1);
+                double distance = distanceInKilometerByHaversine(currentPoint.getLatitude(),currentPoint.getLongitude(),nextPoint.getLatitude(),nextPoint.getLongitude());
+                currentDayDistance += distance;
+                if (currentDayDistance <= distancePerDay && count <= totalcount) {
+                    travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(i+1).
+                            latitude(points.get(i).latitude).longitude(points.get(i).longitude).
+                            information(points.get(i).information).
+                            touristDestinationName(points.get(i).touristDestinationName).build());
+                    count++;
+                } else {
+                    if(travelPlanners.isEmpty()){
+                        travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(i+1).
+                                latitude(points.get(i).latitude).longitude(points.get(i).longitude).
+                                information(points.get(i).information).
+                                touristDestinationName(points.get(i).touristDestinationName).build());
+                        count++;
+                    }
+                    else if(travelPlanners.get(i-1).getDay() == null) {
+                        travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(i+1).
+                                latitude(points.get(i).latitude).longitude(points.get(i).longitude).
+                                information(points.get(i).information).
+                                touristDestinationName(points.get(i).touristDestinationName).build());
+                        count++;
+                    }
+                    else{
+                        //설정한 일수보다 더 높게 되면 안됨
+                        if(day < numDays){
+                            day++;
+                        }
+                        travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(i+1).
+                                latitude(points.get(i).latitude).longitude(points.get(i).longitude).
+                                information(points.get(i).information).
+                                touristDestinationName(points.get(i).touristDestinationName).build());
+                        currentDayDistance = distance;
+                        count=1;
+                    }
+                }
+            }
+        }
+
         //마지막 지점 추가
         if(nextPoint != null){
             travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(points.size()).
