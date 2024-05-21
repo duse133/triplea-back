@@ -1,11 +1,13 @@
 package capstone.triplea.backend.service;
 
+import capstone.triplea.backend.dto.InputNoticeBoardDTO;
 import capstone.triplea.backend.dto.NoticeBoardDTO;
 import capstone.triplea.backend.entity.NoticeBoard;
 import capstone.triplea.backend.exception.CNoticeNotFound;
 import capstone.triplea.backend.repository.NoticeBoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -15,6 +17,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class NoticeBoardService {
     private final NoticeBoardRepository noticeBoardRepository;
 
@@ -44,12 +47,14 @@ public class NoticeBoardService {
     }
 
     // 게시판 글 수정
-    public NoticeBoardDTO updateNotice(int noticeId, String newTitle, String newContents) {
+    public NoticeBoardDTO updateNotice(int noticeId, InputNoticeBoardDTO inputNoticeBoardDTO) {
         NoticeBoard noticeBoard = noticeBoardRepository.findById(noticeId)
                 .orElseThrow(CNoticeNotFound::new);
 
-        noticeBoard.setTitle(newTitle);
-        noticeBoard.setContents(newContents);
+        noticeBoard.setTitle(inputNoticeBoardDTO.getTitle());
+        noticeBoard.setContents(inputNoticeBoardDTO.getContents());
+        noticeBoard.setPassword(hashPassword(inputNoticeBoardDTO.getPassword()));
+        noticeBoard.setDate(inputNoticeBoardDTO.getDate());
         noticeBoardRepository.save(noticeBoard);
 
         return convertToDTO(noticeBoard);

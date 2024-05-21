@@ -42,7 +42,7 @@ public class ExControllerAdvice extends ResponseEntityExceptionHandler {
         ResponseCode responseCode = new ResponseCode();
         responseCode.setCode("E04");
         responseCode.setMsg("비밀번호가 틀렸습니다.");
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseCode);
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(responseCode);
     }
 
     @ExceptionHandler(CNoticeNotFound.class)

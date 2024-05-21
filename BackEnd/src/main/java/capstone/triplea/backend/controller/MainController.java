@@ -53,18 +53,15 @@ public class MainController {
     //게시판 DB에 저장할 게시판 제목, 게시판내용인 여행루트, 비밀번호(암호화 시켜야함)
     //이미 게시판에 있는 정보이면 그 비밀번호와 수정할 정보의 비밀번호와 비교하여 맞으면 수정 틀리면 비밀번호 틀렸다고 오류메세지를 보냄
     @PostMapping("/api/notice_boards")
-    public void insertBoard(InputNoticeBoardDTO inputNoticeBoardDTO) {
+    public void insertBoard(@RequestBody InputNoticeBoardDTO inputNoticeBoardDTO) {
         noticeBoardService.makeNotice(inputNoticeBoardDTO.getTitle(), inputNoticeBoardDTO.getDate(), inputNoticeBoardDTO.getContents(), inputNoticeBoardDTO.getPassword());
     }
 
     //게시판 DB에 저장되어있는 정보를 제거
     @DeleteMapping("/api/notice_boards/{id}")
     public void deleteBoard(@PathVariable int id, @RequestParam String password) {
-        if (noticeBoardService.verifyPassword(id, password)) {
-            noticeBoardService.deleteNotice(id);
-        } else {
-            throw new CWrongPWError();
-        }
+        VerifyPassword(id, password);
+        noticeBoardService.deleteNotice(id);
     }
     //게시판에 저장되어 있는 모든 정보를 가져와야함
     @GetMapping("/api/notice_boards")
@@ -73,12 +70,15 @@ public class MainController {
     }
 
     @PutMapping("/api/notice_boards/{id}")
-    public ResponseEntity<ResponseCode> updateBoard(@PathVariable int id, @RequestParam String password, @RequestParam String newTitle, @RequestParam String newContents){
+    public ResponseEntity<ResponseCode> updateBoard(@PathVariable int id, @RequestParam String inputpassword, @RequestBody InputNoticeBoardDTO inputNoticeBoardDTO){
         // 비밀번호가 올바르면 해당 게시글을 수정
-        if (noticeBoardService.verifyPassword(id, password)) {
-            noticeBoardService.updateNotice(id, newTitle, newContents);
-            return ResponseEntity.ok().build(); // 성공 응답 반환
-        } else {
+        VerifyPassword(id, inputpassword);
+        noticeBoardService.updateNotice(id, inputNoticeBoardDTO);
+        return ResponseEntity.ok().build();
+    }
+
+    private void VerifyPassword(int id, String password) {
+        if (!noticeBoardService.verifyPassword(id, password)) {
             throw new CWrongPWError();
         }
     }
