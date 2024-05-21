@@ -34,6 +34,7 @@ public class MainController {
         if (userInputDTO.getArea() == null || userInputDTO.getDay() == null || userInputDTO.getAccommodationName() == null) {
             throw new CParameterNotFound();
         }
+        System.out.println(userInputDTO.getStrength());
         TravelPlannerListDTO TravelPlannerList = new TravelPlannerListDTO();
         TravelPlannerList.setPlanners(this.makePlannerService.makePlanners(userInputDTO));
 

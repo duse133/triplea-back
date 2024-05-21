@@ -156,7 +156,7 @@ public class PointDTO {
                 nextPoint = points.get(i + 1);
                 double distance = distanceInKilometerByHaversine(currentPoint.getLatitude(),currentPoint.getLongitude(),nextPoint.getLatitude(),nextPoint.getLongitude());
                 currentDayDistance += distance;
-                if (currentDayDistance <= distancePerDay) {
+                if (currentDayDistance <= distancePerDay || count < totalcount) {
                     travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(i+1).
                             latitude(points.get(i).latitude).longitude(points.get(i).longitude).
                             information(points.get(i).information).
@@ -242,9 +242,30 @@ public class PointDTO {
                     information(nextPoint.information).
                     touristDestinationName(nextPoint.touristDestinationName).build());
         }
+
+        //여기서 day가 모자르면 마지막 지점에서 가장 가까운 지점 7개 추가(강도가 강함일때)
+        if(day < numDays && strength.equals("4")){
+            day++;
+            double minDistance = Double.MAX_VALUE;
+            PointDTO closestPoint = null;
+            for(int i =0; i<clusterPoints.size(); i++){
+                double distance = PointDTO.distanceInKilometerByHaversine(nextPoint.getLatitude(), nextPoint.getLongitude(), clusterPoints.get(i).getLatitude(), clusterPoints.get(i).getLongitude());
+                if(distance < minDistance){
+                    minDistance = distance;
+                    closestPoint = clusterPoints.get(i);
+                }
+            }
+            List<PointDTO> addTourList = PointDTO.calculateShortestRouteCount(clusterPoints, closestPoint, 7);
+            for(int i =0 ;i<addTourList.size(); i++){
+                travelPlanners.add(new TravelPlannerDTO().builder().day(String.valueOf(day)).order(i+1).
+                        latitude(addTourList.get(i).latitude).longitude(addTourList.get(i).longitude).
+                        information(addTourList.get(i).information).
+                        touristDestinationName(addTourList.get(i).touristDestinationName).build());
+            }
+        }
         
-        //여기서 day가 모자르면 다른 가까운 군집을 선택해서 모자른 부분을 다른 군집의 루트를 참고하여 추가하고 남으면 버림
-        if(day < numDays){
+        //여기서 day가 모자르면 다른 가까운 군집을 선택해서 모자른 부분을 다른 군집의 루트를 참고하여 추가하고 남으면 버림(강도가 보통일때)
+        if(day < numDays && strength.equals("3")){
             for(int i =0; i<centroids.size(); i++){
                 if(centroids.get(i).getCluster() == nextPoint.getCluster()){
                     centroids.remove(i);
