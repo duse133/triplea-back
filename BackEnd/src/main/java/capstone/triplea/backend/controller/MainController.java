@@ -34,7 +34,6 @@ public class MainController {
         if (userInputDTO.getArea() == null || userInputDTO.getDay() == null || userInputDTO.getAccommodationName() == null) {
             throw new CParameterNotFound();
         }
-        System.out.println(userInputDTO.getStrength());
         TravelPlannerListDTO TravelPlannerList = new TravelPlannerListDTO();
         TravelPlannerList.setPlanners(this.makePlannerService.makePlanners(userInputDTO));
 
@@ -47,7 +46,7 @@ public class MainController {
     //관광공사 api 이미지 가져오기
     @GetMapping("api/getImageSource")
     public ResponseCode getImage(@RequestParam String keyword) throws UnsupportedEncodingException {
-        return getImageResource.ApiImageSource(keyword);
+        return getImageResource.ImageSource(keyword);
     }
 
     //게시판 DB에 저장할 게시판 제목, 게시판내용인 여행루트, 비밀번호(암호화 시켜야함)
@@ -59,8 +58,7 @@ public class MainController {
 
     //게시판 DB에 저장되어있는 정보를 제거
     @DeleteMapping("/api/notice_boards/{id}")
-    public void deleteBoard(@PathVariable int id, @RequestParam String password) {
-        VerifyPassword(id, password);
+    public void deleteBoard(@PathVariable int id) {
         noticeBoardService.deleteNotice(id);
     }
     //게시판에 저장되어 있는 모든 정보를 가져와야함
@@ -69,15 +67,16 @@ public class MainController {
         return noticeBoardService.getNoticeBoard();
     }
 
+    //게시판에 저장되어 있는 데이터 수정
     @PutMapping("/api/notice_boards/{id}")
-    public ResponseEntity<ResponseCode> updateBoard(@PathVariable int id, @RequestParam String inputpassword, @RequestBody InputNoticeBoardDTO inputNoticeBoardDTO){
-        // 비밀번호가 올바르면 해당 게시글을 수정
-        VerifyPassword(id, inputpassword);
+    public ResponseEntity<ResponseCode> updateBoard(@PathVariable int id, @RequestBody InputNoticeBoardDTO inputNoticeBoardDTO){
         noticeBoardService.updateNotice(id, inputNoticeBoardDTO);
         return ResponseEntity.ok().build();
     }
 
-    private void VerifyPassword(int id, String password) {
+    //게시판 정보 수정, 삭제시 비밀번호 확인 매핑
+    @GetMapping("/api/notice_boards/{id}/verify")
+    private void VerifyPassword(@PathVariable int id, @RequestParam String password) {
         if (!noticeBoardService.verifyPassword(id, password)) {
             throw new CWrongPWError();
         }

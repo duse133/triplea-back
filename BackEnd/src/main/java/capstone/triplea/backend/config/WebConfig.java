@@ -14,10 +14,16 @@ public class WebConfig implements WebMvcConfigurer {
      */
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        //registry.addMapping("/**").allowCredentials(true).allowedOrigins("http://triplea-front.s3-website-ap-southeast-2.amazonaws.com/"); //서버 테스트용
+//        서버 테스트용
+//        registry.addMapping("/**")
+//                .allowCredentials(true)
+//                .allowedMethods("GET", "POST", "PUT", "DELETE")
+//                .allowedOrigins("http://triplea-front.s3-website-ap-southeast-2.amazonaws.com/");
+
+//        로컬 테스트용
         registry.addMapping("/**")
                 .allowCredentials(true)
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
-                .allowedOrigins("http://localhost:3000"); //로컬 테스트용
+                .allowedOrigins("http://localhost:3000");
     }
 }

@@ -372,7 +372,6 @@ public class MakePlannerService {
             
             //최소 각 중요도에서 가까운 여행지를 고르는 갯수
             int lesatCount = dayPerCount / centroids.size() + 1;
-            System.out.println("최소 여행지 :"+lesatCount);
             //일단 중요도가 높은 여행지 루트 추가
             shortPoint.addAll(centroids);
             for(int j =0 ; j<centroids.size(); j++){
@@ -388,7 +387,6 @@ public class MakePlannerService {
                     shortPoint.addAll(PointDTO.calculateShortestRouteCount(points, centroids.get(j),lesatCount));
                 }
             }
-            System.out.println("추가한 여행지 루트 갯수:" + shortPoint.size());
             List<PointDTO> shortRoute = new ArrayList<>();
 
             shortRoute = PointDTO.calculateShortestRoute(shortPoint, closestPoint);
